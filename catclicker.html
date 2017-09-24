@@ -38,7 +38,7 @@
             margin-top: 20px;
         }
 
-        .hidden{
+        .hidden {
             display: none;
         }
 
@@ -47,6 +47,10 @@
             text-decoration: none;
             /* float: left; */
             padding: 5px;
+        }
+
+        ul {
+            padding-left: 0;
         }
     </style>
 </head>
@@ -60,15 +64,24 @@
         <input type="text" id="txtCatPath"/>
         <button type="button" id="btnAdd">Adicionar</button>
     </div> -->
-    <div class="padding align-center">
+    <div class="padding align-center" data-bind="with:currentCat()">
+        <hr>
         <p id="catName" data-bind="text:catName"></p>
+        <hr>
+        <div class="align-center top">
+            <p>Apelidos</p>
+            <ul id="catlist" data-bind="foreach: nicknames">
+                <li data-bind="text:$data"></li>
+            </ul>
+        </div>
         <p id="catLvl" data-bind="text:catLevel()"></p>
-        <img id="imgCat" class="cat-img" alt="" data-bind="attr:{src:image},click: incrementClick">
-        <p id="timesClicked" data-bind="text:timesClicked"></p>
+        <img id="imgCat" class="cat-img" alt="" data-bind="attr:{src:image},click: $parent.incrementClick">
+        <p id="timesClicked" data-bind="text:timesClicked()"></p>
     </div>
     <div class="padding align-center top">
-        <ul id="catlist" data-bind="foreach: nicknames">
-            <li data-bind="text:$data"></li>
+        <p>Outros gatos</p>
+        <ul id="catlist" data-bind="">
+            <li data-bind=""></li>
         </ul>
     </div>
 
