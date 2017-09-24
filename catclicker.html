@@ -55,22 +55,24 @@
     <div class="padding">
         <button id="btnAdmin">Admin</button>
     </div>
-    <div id="container" class="padding hidden">
+    <!-- <div id="container" class="padding hidden">
         <input type="text" id="txtCatName"/>
         <input type="text" id="txtCatPath"/>
         <button type="button" id="btnAdd">Adicionar</button>
-    </div>
+    </div> -->
     <div class="padding align-center">
-        <p id="catName">Cat</p>
-        <img id="imgCat" class="cat-img" alt="">
-        <p id="timesClicked"></p>
+        <p id="catName" data-bind="text:catName"></p>
+        <p id="catLvl" data-bind="text:catLevel()"></p>
+        <img id="imgCat" class="cat-img" alt="" data-bind="attr:{src:image},click: incrementClick()">
+        <p id="timesClicked" data-bind="text:timesClicked"></p>
     </div>
     <div class="padding align-center top">
         <ul id="catlist">
         </ul>
     </div>
 
-    <script src="app.js" charset="utf-8"></script>
+    <script src="js/knockout.js" charset="utf-8"></script>
+    <script src="js/app.js" charset="utf-8"></script>
 </body>
 
 </html>
