@@ -1,0 +1,124 @@
+<html>
+
+<head>
+    <title>katklicker</title>
+    <meta content="">
+    <style>
+        .cat-img {
+            width: 500px;
+            height: auto;
+            min-height: 300px;
+        }
+
+        .small-picture {
+            width: 100px;
+            height: auto;
+        }
+
+        .thumb {}
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .padding {
+            text-align: center;
+            padding: 10px 10px 10px 10px;
+        }
+
+        .align-center {
+            text-align: center;
+        }
+
+        .top {
+            margin-top: 20px;
+        }
+
+        li {
+            display: inline;
+            text-decoration: none;
+            float: left;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body class="padding align-center">
+    <div class="padding align-center">
+        <p id="catName">Cat</p>
+        <img id="imgCat" class="cat-img" alt="">
+        <p id="timesClicked"></p>
+    </div>
+    <div class="padding align-center top">
+        <ul id="catlist">
+        </ul>
+    </div>
+
+
+    <script type="text/javascript">
+        var globalList = document.getElementById("catlist");
+        var bigCatPicture = document.getElementById("imgCat");
+        var bigCatName = document.getElementById("catName");
+        var bigCatCounter = document.getElementById("timesClicked");
+        var catBounded = function(){};
+        var catClickedGlobal = function() {
+            this.timesClicked += 1;
+        };
+
+        var catSelected = function() {
+            bigCatPicture.setAttribute("src",this.path);
+            bigCatName.innerText = this.name;
+            bigCatCounter.innerText = this.timesClicked;
+            bigCatPicture.removeEventListener("click",catBounded);
+            catBounded = bigCatClick.bind(this);
+            bigCatPicture.addEventListener('click', catBounded);
+        }
+
+        var bigCatClick = function() {
+            console.log(this);
+            this.catClicked();
+            bigCatCounter.innerText = this.timesClicked;
+        }
+
+        var Cat = function(name, path) {
+            var divElement = document.createElement("div");
+            var liElement = document.createElement("li");
+            var imageDOM = document.createElement("img");
+            this.name = name;
+            this.path = path;
+            this.timesClicked = 0;
+
+            //funções
+
+            this.catClicked = catClickedGlobal.bind(this);
+
+            //listener
+
+            imageDOM.addEventListener('click', catSelected.bind(this));
+
+            //tratamento imagem
+            imageDOM.setAttribute("src", path);
+            imageDOM.classList.add("small-picture");
+            //tratamento divElement
+            divElement.classList.add("small-picture");
+            //appends
+            divElement.append(imageDOM);
+            liElement.append(divElement);
+            globalList.append(liElement);
+
+
+            return this;
+
+        }
+
+        var cat1 = new Cat("Geronimo", "cat.jpeg");
+        var cat2 = new Cat("Bubbles", 'cat2.jpeg');
+        var cat3 = new Cat("Peebles", 'cat3.jpeg');
+    </script>
+</body>
+
+</html>
