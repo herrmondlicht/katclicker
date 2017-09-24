@@ -63,11 +63,12 @@
     <div class="padding align-center">
         <p id="catName" data-bind="text:catName"></p>
         <p id="catLvl" data-bind="text:catLevel()"></p>
-        <img id="imgCat" class="cat-img" alt="" data-bind="attr:{src:image},click: incrementClick()">
+        <img id="imgCat" class="cat-img" alt="" data-bind="attr:{src:image},click: incrementClick">
         <p id="timesClicked" data-bind="text:timesClicked"></p>
     </div>
     <div class="padding align-center top">
-        <ul id="catlist">
+        <ul id="catlist" data-bind="foreach: nicknames">
+            <li data-bind="text:$data"></li>
         </ul>
     </div>
 
