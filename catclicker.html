@@ -43,22 +43,23 @@
         }
 
         li {
-            display: inline;
+            display: inline-flex;
             text-decoration: none;
             /* float: left; */
             padding: 5px;
         }
 
         ul {
+            display: inline-flex;
             padding-left: 0;
         }
     </style>
 </head>
 
 <body class="padding align-center">
-    <div class="padding">
+    <!-- <div class="padding">
         <button id="btnAdmin">Admin</button>
-    </div>
+    </div> -->
     <!-- <div id="container" class="padding hidden">
         <input type="text" id="txtCatName"/>
         <input type="text" id="txtCatPath"/>
@@ -80,8 +81,12 @@
     </div>
     <div class="padding align-center top">
         <p>Outros gatos</p>
-        <ul id="catlist" data-bind="">
-            <li data-bind=""></li>
+        <ul id="catlist" data-bind="foreach: catList()">
+            <li>
+                <div class="small-picture">
+                    <img class="small-picture" data-bind="attr:{src:image}, click: $parent.setCurrentCat" alt="">
+                </div>
+            </li>
         </ul>
     </div>
 
